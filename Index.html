@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodMenu Bangkok</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-icon"></div>
+    FoodMenu Bangkok
+  </div>
+  <div class="nav-right">
+    <span>กรุงเทพมหานคร</span>
+    <span id="bkkTime" class="nav-badge" style="background:#fff0e8;color:var(--orange);border:1px solid var(--orange-mid)"></span>
+    <span class="nav-badge">Google Places</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1 class="hero-title">ค้นหา <span>เมนูอาหาร</span> ในกรุงเทพ</h1>
+  <p class="hero-sub">ข้อมูลจริงจาก Google — ชื่อร้าน รูปภาพ เวลาเปิด-ปิด รีวิว และที่อยู่</p>
+  <div class="search-box">
+    <div class="search-box-icon">🔍</div>
+    <input type="text" id="searchInput" placeholder="ค้นหา เช่น ผัดไทย, ต้มยำ, ส้มตำ, ข้าวมันไก่..."
+      onkeydown="if(event.key==='Enter') doSearch()">
+    <button onclick="doSearch()">ค้นหา</button>
+  </div>
+  <div class="tag-chips">
+    <span class="tag-chip" onclick="quickSearch('ผัดไทย')">#ผัดไทย</span>
+    <span class="tag-chip" onclick="quickSearch('ต้มยำ')">#ต้มยำ</span>
+    <span class="tag-chip" onclick="quickSearch('ส้มตำ')">#ส้มตำ</span>
+    <span class="tag-chip" onclick="quickSearch('ข้าวมันไก่')">#ข้าวมันไก่</span>
+    <span class="tag-chip" onclick="quickSearch('แกงเขียวหวาน')">#แกงเขียวหวาน</span>
+    <span class="tag-chip" onclick="quickSearch('ก๋วยเตี๋ยว')">#ก๋วยเตี๋ยว</span>
+    <span class="tag-chip" onclick="quickSearch('ข้าวผัด')">#ข้าวผัด</span>
+    <span class="tag-chip" onclick="quickSearch('ลาบหมู')">#ลาบหมู</span>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="results-bar" id="resultsBar" style="display:none">
+  <div class="results-title" id="resultsTitle"></div>
+  <div class="results-count" id="resultsCount"></div>
+</div>
+
+<div class="grid-wrap">
+  <div class="menu-grid" id="grid">
+    <div class="state-box">
+      <div class="state-icon"></div>
+      <div class="state-title">ค้นหาเมนูที่คุณอยากทาน</div>
+      <div class="state-sub">พิมพ์ชื่อเมนู หรือกดแท็กด้านบน<br>เพื่อค้นหาร้านอาหารในกรุงเทพ</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-img" id="mImg"></div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-icon"></div>
+    FoodMenu Bangkok
+  </div>
+  <div class="footer-sub">ข้อมูลจาก Google Places API · กรุงเทพมหานคร</div>
+</footer>
+
+<!-- Google Maps JS API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqZcKubf-Sxj9O0dmY1wlbZWE1dbbEUJA&libraries=places&language=th&callback=initApp" async defer></script>
+<script src="JavaScript/app.js"></script>
+
+</body>
+</html>
